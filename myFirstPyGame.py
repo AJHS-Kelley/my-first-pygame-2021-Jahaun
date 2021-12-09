@@ -1,4 +1,4 @@
-# My First Game, Jahaun Gilmore, 11/29/21 2:51pm, v0.5
+# My First Game, Jahaun Gilmore, 12/9/21 2:27pm, v0.6
 
 import pygame, sys
 from pygame.locals import *
@@ -31,3 +31,8 @@ windowSurface.fill(WHITE)
 
 # Draw a polygon onto the screen.
 pygame.draw.polygon(windowSurface, BLUE, ((146, 0), (291, 106), (236, 277), (56, 277), (0, 106)))
+
+#Draw a polygon onto the screen.
+pygame.draw.line(windowsSurface, GREEN, (60,60), (120,60), 4)
+pygame.draw.line(windowsSurface, BLUE, (256,300), (300,400), 3)
+pygame.draw.line(windowsSurface, NOTRED, (100,200), (140,235), 2)
