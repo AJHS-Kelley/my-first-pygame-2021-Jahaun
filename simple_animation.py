@@ -1,4 +1,4 @@
-# Simple Animation with PyGame, Jahaun Gilmore, 2/2/22, 2:32PM, v0.2
+# Simple Animation with PyGame, Jahaun Gilmore, 2/2/22, 2:39PM, v0.3
 
 import pygame, sys, time
 from pygame.locals import *
@@ -19,3 +19,9 @@ UPLEFT = 'upleft'
 UPRIGHT = 'upright'
 
 MOVESPEED = 4
+
+# Setup color values
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
