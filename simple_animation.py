@@ -1,4 +1,4 @@
-# Simple Animation with PyGame, Jahaun Gilmore, 2/3/22, 10:33PM, v0.8
+# Simple Animation with PyGame, Jahaun Gilmore, 2/3/22, 12:10AM, v0.9
 
 import pygame, sys, time
 from pygame.locals import *
@@ -9,7 +9,7 @@ pygame.init()
 # Setup the Window
 WINDOWWIDTH = 400
 WINDOWHEIGHT = 400
-windowSurface = pygame.display.set_mode(WINDOWWIDTH, WINDOWHEIGHT), 0, 32)
+windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT), 0, 32)
 pygame.display.set_caption('Animation Example!') 
 
 # Setup the direction variables.
@@ -27,16 +27,16 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
 # Setup the box data
-b1 = ('rect':pygame.Rect(300, 50, 80, 100), 'color':RED, 'dir':UPRIGHT)
-b2 = ('rect':pygame.Rect(200, 200, 20, 20), 'color':GREEN, 'dir':UPLEFT)
-b3 = ('rect':pygame.Rect(100, 150, 60, 60), 'color':BLUE, 'dir':DOWNRIGHT)
+b1 = {'rect':pygame.Rect(300, 50, 80, 100), 'color':RED, 'dir':UPRIGHT}
+b2 = {'rect':pygame.Rect(200, 200, 20, 20), 'color':GREEN, 'dir':UPLEFT}
+b3 = {'rect':pygame.Rect(100, 150, 60, 60), 'color':BLUE, 'dir':DOWNRIGHT}
 boxes = [b1, b2, b3]
 
 # Run the game loop
 while True:
     # Check the QUIT event
     for event in pygame.event.get():
-        if event.type  == QUIT:
+        if event.type == quit:
             pygame.quit()
             sys.exit()
 
@@ -63,24 +63,24 @@ while True:
                 b['dir'] = DOWNLEFT
             if b['dir'] == UPRIGHT:
                  b['dir'] = DOWNRIGHT
-            if b['rect'].bottom > WINDOWHEIGHT:
-                # The box has moved past the bottom
-                if b['dir'] == DOWNLEFT:
-                     b['dir'] = UPLEFT
-                if b['dir'] == DOWNRIGHT:
-                    b['dir'] = UPRIGHT
-            if b['rect'].left < 0:
-                # The box has moved past the left
-                if b['dir'] == DOWNLEFT:
-                    b['dir'] = DOWNRIGHT
-                if b['dir'] == UPLEFT:
-                    b['dir'] = UPRIGHT
-            if b['rect'].right > WINDOWWIDTH:
-                # The box has moved past the right
-                if b['dir'] == DOWNRIGHT:
-                    b['dir'] = DOWNLEFT
-                if b['dir'] == UPRIGHT:
-                    b['dir'] = UPLEFT
+        if b['rect'].bottom > WINDOWHEIGHT:
+            # The box has moved past the bottom
+            if b['dir'] == DOWNLEFT:
+                b['dir'] = UPLEFT
+            if b['dir'] == DOWNRIGHT:
+                b['dir'] = UPRIGHT
+        if b['rect'].left < 0:
+            # The box has moved past the left
+            if b['dir'] == DOWNLEFT:
+                b['dir'] = DOWNRIGHT
+            if b['dir'] == UPLEFT:
+                b['dir'] = UPRIGHT
+        if b['rect'].right > WINDOWWIDTH:
+            # The box has moved past the right
+            if b['dir'] == DOWNRIGHT:
+                b['dir'] = DOWNLEFT
+            if b['dir'] == UPRIGHT:
+                b['dir'] = UPLEFT
 
         # Draw the box onto the game surface
         pygame.draw.rect(windowSurface, b[ 'color' ], b[ 'rect'])
